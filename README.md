@@ -1,59 +1,63 @@
-# Gas Price Bot
+# Gas Price Monitor Bot
 
-Этот репозиторий содержит скрипт на Python для мониторинга цен на газ в блокчейнах Ethereum и StarkNet и отправки обновлений в чат Telegram. Бот проверяет цены на газ каждые 10 секунд и отправляет форматированное сообщение с эмодзи, указывающими уровни цен на газ.
+Этот бот отслеживает цены на газ в Ethereum и StarkNet и отправляет обновления в Telegram.
 
-## Функции
+## Настройка
 
-- Подключение к Ethereum с использованием Web3.
-- Подключение к StarkNet с использованием HTTP RPC.
-- Получение текущих цен на газ с обоих блокчейнов.
-- Отправка обновлений цен на газ в указанный чат Telegram.
-- Использование эмодзи для указания уровней цен на газ.
+### Шаг 1: Клонирование репозитория
 
-## Требования
+Клонируйте репозиторий:
 
-- Python 3.8+
-- Библиотека `web3`
-- Библиотека `requests`
-- Библиотека `pyTelegramBotAPI`
-- Библиотека `aiohttp`
+```sh
+git clone https://your-repo-url.git
+cd your-repo-directory
+```
 
-## Установка
+### Шаг 2: Создание конфигурационного файла
 
-1. Клонируйте репозиторий:
-   ```sh
-   git clone https://github.com/yourusername/gas-price-bot.git
-   cd gas-price-bot
-   ```
+Создайте файл `config.py` на основе `config_template.py` и заполните его своими данными:
 
-2. Создайте виртуальное окружение и активируйте его:
-   ```sh
-   python -m venv venv
-   source venv/bin/activate  # На Windows используйте `venv\Scripts\activate`
-   ```
+```sh
+cp config_template.py config.py
+```
 
-3. Установите необходимые библиотеки:
-   ```sh
-   pip install -r requirements.txt
-   ```
+Отредактируйте `config.py`, добавив свои данные:
 
-4. Настройте переменные окружения для URL-адреса Ethereum, URL-адреса StarkNet и токена бота Telegram.
+```python
+# config.py
 
-## Конфигурация
+ETH_ENDPOINT_URI = 'https://your_eth_endpoint_here'
+STARKNET_URL = "https://your_starknet_url_here"
+TELEGRAM_TOKEN = "your_telegram_token_here"
+CHAT_ID = "your_chat_id_here"
+```
 
-Обновите следующие переменные в скрипте:
+### Шаг 3: Установка зависимостей
 
-- `endpoint_uri`: Ваш URL HTTP-провайдера Ethereum.
-- `STARKNET_URL`: Ваш URL RPC StarkNet.
-- `TOKEN`: Ваш токен бота Telegram.
-- `CHAT_ID`: ID чата вашей группы/канала Telegram.
+Установите зависимости из файла `requirements.txt`:
 
-## Использование
+```sh
+pip install -r requirements.txt
+```
 
-Запустите скрипт для начала мониторинга цен на газ и отправки обновлений в Telegram:
+### Шаг 4: Запуск бота
+
+Запустите бота:
 
 ```sh
 python main.py
 ```
 
-Скрипт будет каждые 10 секунд проверять текущие цены на газ в блокчейнах Ethereum и StarkNet, формировать сообщение и отправлять его в указанный чат Telegram. Уровни цен на газ будут отображаться с использованием эмодзи для удобства восприятия.
+## Зависимости
+
+Для работы бота необходимы следующие зависимости:
+
+- `web3`: для работы с Ethereum.
+- `pyTelegramBotAPI`: для взаимодействия с Telegram.
+- `aiohttp`: для выполнения асинхронных HTTP-запросов.
+
+Все зависимости указаны в файле `requirements.txt` и могут быть установлены с помощью команды:
+
+```sh
+pip install -r requirements.txt
+```
