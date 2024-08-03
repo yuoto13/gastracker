@@ -3,16 +3,15 @@ import requests
 from web3 import Web3
 from telebot import TeleBot
 import aiohttp
+import config  # Импортируем файл конфигурации
 
 # Подключение к Ethereum
-web3 = Web3(Web3.HTTPProvider(endpoint_uri='https://eth-pokt.nodies.app'))
+web3 = Web3(Web3.HTTPProvider(endpoint_uri=config.ETH_ENDPOINT_URI))
 
 # URL для подключения к StarkNet
-STARKNET_URL = "https://rpc.starknet.lava.build"
+STARKNET_URL = config.STARKNET_URL
 
-TOKEN = "6675870031:AAHEsCASQsVq9_OA98EPmdYO7e3y9ggoDts"
-CHAT_ID = "-1001885026748"
-bot = TeleBot(TOKEN)
+bot = TeleBot(config.TELEGRAM_TOKEN)
 
 # Функция для получения цены газа на Ethereum
 def get_gas_price_eth():
@@ -62,7 +61,7 @@ async def get_gas_price_starknet():
 
 # Функция для отправки сообщения в Telegram
 def send_message(message):
-    bot.send_message(chat_id=CHAT_ID, text=message)
+    bot.send_message(chat_id=config.CHAT_ID, text=message)
 
 # Основная функция, запускающая цикл обновления
 async def main():
