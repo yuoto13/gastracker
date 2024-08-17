@@ -15,10 +15,10 @@ cd your-repo-directory
 
 ### Шаг 2: Создание конфигурационного файла
 
-Создайте файл `config.py` на основе `config_template.py` и заполните его своими данными:
+Создайте файл `config.py` на основе `config_temp.py` и заполните его своими данными:
 
 ```sh
-cp config_template.py config.py
+cp config_temp.py config.py
 ```
 
 Отредактируйте `config.py`, добавив свои данные:
